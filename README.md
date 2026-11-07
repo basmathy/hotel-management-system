@@ -1,4 +1,4 @@
-# Hotel Management
+# Hotel Management System
 
 Четыре сервиса на Java 21, Spring Boot 3.5.7 и Spring Cloud 2025.0.0.
 Maven, Spring MVC/JPA для бизнес-сервисов, WebFlux для Gateway, Eureka,
