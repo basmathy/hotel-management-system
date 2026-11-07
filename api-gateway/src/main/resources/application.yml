@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: hotel-platform
+    audience: hotel-api
+spring.cloud.gateway.server.webflux:
+  routes:
+    - id: hotel
+      uri: lb://hotel-management-service
+      predicates:
+        - Path=/api/hotels/**,/api/rooms/**
+    - id: booking
+      uri: lb://booking-service
+      predicates:
+        - Path=/api/auth/**,/api/users/**,/api/bookings/**
+
+
+
+spring.cloud.gateway.server.webflux.httpclient:
+  connect-timeout: 1000
+  response-timeout: 3s

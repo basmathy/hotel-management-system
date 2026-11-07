@@ -1,0 +1,5 @@
+# Local demonstration only. Override both secrets for any shared deployment.
+security:
+  jwt:
+    secret: ${JWT_SECRET:demo-only-signing-key-at-least-32-characters}
+  internal-token: ${INTERNAL_TOKEN:demo-only-internal-token}

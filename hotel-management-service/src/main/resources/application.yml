@@ -1,0 +1,37 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: hotel-management-service
+  datasource:
+    url: jdbc:h2:mem:hotel;DB_CLOSE_DELAY=-1;LOCK_TIMEOUT=2000
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: hotel-platform
+    audience: hotel-api
+  internal-token: ${INTERNAL_TOKEN}
+
+
+
+logging:
+  pattern:
+    level: "%5p [correlationId=%X{correlationId:-}]"
+spring.data.web.pageable:
+  max-page-size: 200

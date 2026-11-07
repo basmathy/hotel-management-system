@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:booking-test;DB_CLOSE_DELAY=-1;LOCK_TIMEOUT=1500
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+eureka:
+  client:
+    enabled: false
+security:
+  jwt:
+    secret: test-signing-secret-with-at-least-32-bytes-long
+  internal-token: test-internal
+hotel:
+  base-url: http://localhost:1
+  internal-token: test-internal
+saga:
+  scheduling-enabled: false
+
+
+logging:
+  level:
+    root: WARN
+debug: false
